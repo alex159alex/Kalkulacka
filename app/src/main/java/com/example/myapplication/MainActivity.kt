@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
+           //Vyčistenie buttona, pridanie znakov...
         button_clear.setOnClickListener {
             input.text = ""
             output.text = ""
@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //Nahradenie znakov
     private fun getInputExpression(): String{
         var expression = input.text.replace(Regex("÷"),"/")
         expression = expression.replace(Regex("x"),"*")
@@ -94,15 +95,16 @@ class MainActivity : AppCompatActivity() {
             if(result.isNaN()){
                 output.text = "Error"
                 output.setTextColor(ContextCompat.getColor(this, R.color.red))
-
+              //Ukaže Error správu
             } else {
+                //Ukáže vysledok
                 output.text = DecimalFormat("0.######").format(result).toString()
                 output.setTextColor(ContextCompat.getColor(this, R.color.green))
             }
         } catch (e:Exception) {
             output.text = "Error"
             output.setTextColor(ContextCompat.getColor(this, R.color.red))
-
+           //Ukaže Error správu
         }
 
     }
